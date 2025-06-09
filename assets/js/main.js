@@ -341,21 +341,29 @@
 	}
 
 	let pc = gsap.matchMedia();
-	pc.add("(min-width: 992px)", () => {
-		if ($('.td-fixed-thumb-wrap').length > 0) {
-			let project_text = gsap.timeline({
-				scrollTrigger: {
-					trigger: ".td-fixed-thumb-wrap",
-					start: 'top center-=350',
-					end: "bottom 65%",
-					pin: ".td-fixed-thumb",
-					markers: false,
-					pinSpacing: false,
-					scrub: 1,
-				}
-			})
-		}	
-	});
+
+pc.add("(min-width: 992px)", () => {
+    const wrappers = document.querySelectorAll('.td-fixed-thumb-wrap');
+
+    wrappers.forEach((wrap) => {
+        let thumb = wrap.querySelector('.td-fixed-thumb');
+
+        if (thumb) {
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: wrap,
+                    start: 'top center-=350',
+                    end: 'bottom 65%',
+                    pin: thumb,
+                    markers: false,
+                    pinSpacing: false,
+                    scrub: 1,
+                }
+            });
+        }
+    });
+});
+
 
 	/*=============================================
 		=      td-testimonial-3-slider      =
