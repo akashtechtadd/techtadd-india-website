@@ -4661,15 +4661,26 @@ textarea {
   letter-spacing: -0.03em;
   line-height: 60px;
 }
+.td-about-title-custom{
+  font-size: 30px !important;
+  line-height: 40px !important;
+}
 @media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), only screen and (min-width: 576px) and (max-width: 767px), (max-width: 575px) {
   .td-about-title {
     font-size: 40px;
     line-height: 1.2;
   }
+  .td-about-title-custom{
+    font-size: 30px;
+    line-height: 1.1;
+  }
 }
 @media only screen and (min-width: 576px) and (max-width: 767px), (max-width: 575px) {
   .td-about-title {
     font-size: 30px;
+  }
+  .td-about-title-custom{
+    font-size: 25px;
   }
 }
 @media (max-width: 575px) {
@@ -5827,15 +5838,32 @@ textarea {
   color: var(--td-common-black);
 }
 .td-process-title {
+  position: relative;
   border-right: 1px solid rgba(28, 29, 31, 0.2);
   border-bottom: 1px solid rgba(28, 29, 31, 0.2);
   height: 100%;
   padding: 0px 30px 0px 50px;
-  /* width: 500px; */
-  margin-left: -58px;
+  margin-left: -30px;
   display: flex;
   align-items: center;
+  cursor: pointer; /* Optional: indicates interactivity */
 }
+
+.td-process-title::after {
+  content: '';
+  position: absolute;
+  left: 50px; /* matches left padding */
+  bottom: 20px; 
+  width: 0;
+  height: 2px;
+  background-color: black;
+  transition: width 0.3s ease;
+}
+
+.td-process-title:hover::after {
+  width: calc(100% - 80px); /* total horizontal padding (50 + 30) */
+}
+
 @media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), only screen and (min-width: 576px) and (max-width: 767px), (max-width: 575px) {
   .td-process-title {
     border-right: none;
@@ -7702,6 +7730,7 @@ textarea {
 }
 .td-portfolio-2-thumb img {
   border-radius: 10px;
+  width: 600px;
 }
 @media only screen and (min-width: 576px) and (max-width: 767px), (max-width: 575px) {
   .td-portfolio-2-thumb img {
@@ -11394,9 +11423,24 @@ textarea {
   transform: translateX(10px); 
 }
 
+.cta-card .td-service-2-title-wrap .td-section-2-title{
+  width: 60%;
+}
 
 @media(min-width: 768px){
   .td-about-thumb-wrap{
     margin-top: -100px;
+  }
+}
+@media(max-width: 768px){
+  .cta-card{
+    padding: 40px;
+  }
+  .cta-card .td-service-2-title-wrap .td-section-2-title{
+  width: 100%;
+  text-align: center;
+  }
+  .cta-card .td-title-anim{
+    text-align: center;
   }
 }
